@@ -126,6 +126,11 @@ if [ "$(file_getprop anykernel.sh do.devicecheck)" == 1 ]; then
   if [ ! "$match" ]; then
     abort "Unsupported device. Aborting...";
   fi;
+  if [ "$(file_getprop /system/build.prop ro.treble.enabled)" == "true" ]; then
+    dtb=/tmp/anykernel/treble;
+  else
+    dtb=/tmp/anykernel/nontreble;
+  fi;
 fi;
 
 int2float() { test "$1" -eq "$1" 2>/dev/null && $bb printf '%0.1f\n' "$1" || echo "$1"; }
@@ -163,8 +168,12 @@ done;
 if [ $? != 0 -o -z "$(ls bin)" ]; then
   abort "Recovery busybox setup failed. Aborting...";
 fi;
-PATH="/tmp/anykernel/bin:$PATH" $bb ash anykernel.sh $2;
-if [ $? != 0 ]; then
+cat /tmp/anykernel/kernel/Image.gz $dtb/*.dtb > /tmp/anykernel/Image.gz-dtb;
+if [ $? != "0" ]; then
+  abort "DTB append failed. Aborting...";
+fi;
+PATH="/tmp/anykernel/bin:$PATH" $bb ash /tmp/anykernel/anykernel.sh $2;
+if [ $? != "0" ]; then
   abort;
 fi;
 
