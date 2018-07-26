@@ -14,9 +14,9 @@ supported.versions=
 '; } # end properties
 
 # shell variables
-block=/dev/block/mmcblk0p21;
+block=/dev/block/platform/soc/7824900.sdhci/by-name/boot;
 is_slot_device=0;
-ramdisk_compression=auto;
+ramdisk_compression=gz;
 
 
 ## AnyKernel methods (DO NOT CHANGE)
