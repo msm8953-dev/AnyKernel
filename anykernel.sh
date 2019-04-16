@@ -4,19 +4,19 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=
+kernel.string=KudKernel for Redmi Note 4(X) Snapdragon
 do.devicecheck=1
 do.modules=0
 do.systemless=1
 do.cleanup=1
-do.cleanuponabort=0
-device.name1=
-supported.versions=
+do.cleanuponabort=1
+device.name1=mido
+supported.versions=9
 supported.patchlevels=
 '; } # end properties
 
 # shell variables
-block=;
+block=/dev/block/platform/soc/7824900.sdhci/by-name/boot;
 is_slot_device=0;
 ramdisk_compression=auto;
 
