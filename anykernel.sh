@@ -35,6 +35,11 @@ dump_boot;
 
 # begin ramdisk changes
 
+# init.rc
+restore_file init.rc;
+backup_file init.rc;
+insert_line init.rc 'kud' after 'import /init.\${ro.zygote}.rc' 'import /init.kud.rc';
+
 # end ramdisk changes
 
 write_boot;
