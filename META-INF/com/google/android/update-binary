@@ -164,6 +164,10 @@ if [ "$supported_ver" ]; then
   fi;
 fi;
 
+if [ "$(file_getprop /system/build.prop ro.treble.enabled)" != "true" ]; then
+  abort "Non-treble ROMs are unsupported. Aborting...";
+fi
+
 ui_print "Installing...";
 for i in $($bb --list); do
   $bb ln -s $bb bin/$i;
