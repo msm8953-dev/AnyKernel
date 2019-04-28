@@ -19,6 +19,3 @@ done
 # Set read ahead to 128 kb for external storage
 # The rest are handled by qcom-post-boot
 write /sys/block/mmcblk1/queue/read_ahead_kb 128
-
-# Make sure Yama ptrace settings can't be changed
-write /proc/sys/kernel/yama/ptrace_scope 3
