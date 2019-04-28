@@ -22,8 +22,3 @@ write /sys/block/mmcblk1/queue/read_ahead_kb 128
 
 # Make sure Yama ptrace settings can't be changed
 write /proc/sys/kernel/yama/ptrace_scope 3
-
-# Display/fingerprint wakeup delay fix
-chown system:system /sys/devices/soc/qpnp-fg-19/power_supply/bms/hi_power
-chmod 0660 /sys/devices/soc/qpnp-fg-19/power_supply/bms/hi_power
-write /sys/devices/soc/qpnp-fg-19/power_supply/bms/hi_power 1
