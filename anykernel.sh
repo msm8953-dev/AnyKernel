@@ -30,6 +30,8 @@ ramdisk_compression=auto;
 # set permissions/ownership for included ramdisk files
 set_perm_recursive 0 0 755 644 $ramdisk/*;
 set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
+# set as executable
+set_perm 0 0 750 $ramdisk/init.kud.sh;
 
 
 ## AnyKernel install
