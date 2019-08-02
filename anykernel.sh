@@ -28,6 +28,16 @@ ramdisk_compression=auto;
 ## AnyKernel install
 dump_boot;
 
+uncompressed_image=/tmp/anykernel/files/Image
+compressed_image=$uncompressed_image.gz
+if [ -d $ramdisk/.backup ]; then
+  ui_print " " "Magisk patched boot image detected";
+  $bin/magiskboot hexpatch $uncompressed_image 736B69705F696E697472616D667300 77616E745F696E697472616D667300;
+fi
+
+$bin/magiskboot compress=gzip $uncompressed_image $compressed_image;
+cat $compressed_image /tmp/anykernel/files/*.dtb > /tmp/anykernel/Image.gz-dtb;
+
 write_boot;
 ## end install
 
