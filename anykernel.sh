@@ -4,14 +4,14 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=MoeSyndrome Kernel for Redmi Note 4(X) Snapdragon
+kernel.string=malviscape kernel for Redmi Note 4(X) Snapdragon
 do.devicecheck=1
 do.modules=0
 do.systemless=0
 do.cleanup=1
 do.cleanuponabort=1
 device.name1=mido
-supported.versions=9-10
+supported.versions=9-11
 supported.patchlevels=2019-09-
 '; } # end properties
 
